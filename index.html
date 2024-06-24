@@ -1,369 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Engineering College Exam Results</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 20px;
-  }
-  .container {
-    max-width: 800px;
-    margin: 0 auto;
-    background-color: #fff;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-  }
-  h1, h2, h4 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  label {
-    margin-bottom: 8px;
-  }
-  input[type="text"], input[type="submit"], select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  th, td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: left;
-  }
-  th {
-    background-color: #f2f2f2;
-  }
-  .total {
-    margin-top: 20px;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Name on Button Click</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        #name-container {
+            display: none;
+            margin-top: 20px;
+            font-size: 20px;
+            color: #333;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
 
-<div class="container">
-  <h1>Samskruti College of Engineering and Technology</h1>
-  <h4>1st Year 1st Semester Results- R22</h4>
-  
-  <form id="resultForm">
-    <label for="branch">Select Branch:</label>
-    <select id="branch" name="branch">
-      <option value="CSE">Computer Science and Engineering (CSE)</option>
-      <option value="CSM">Computer Science and Machine learning (CSM)</option>
-      <option value="CSD">Computer Science and Data science (CSD)</option>
-      <option value="ECE">Electronics and Communication Engineering (ECE)</option>
-      <option value="EEE">Electrical and Electronics Engineering (EEE)</option>
-    </select>
+    <div>
+        <button class="button" onclick="showName()">Result</button>
+        <div id="name-container">SAI T</div>
+    </div>
 
-    <label for="rollNumber">Enter Roll Number:</label>
-    <input type="text" id="rollNumber" name="rollNumber" required>
-    
-    <input type="submit" value="Get Results">
-  </form>
-
-  <div id="resultContainer">
-    <!-- Results will be displayed here -->
-  </div>
-</div>
-
-<script>
-document.getElementById('resultForm').addEventListener('submit', function(event) {
-  event.preventDefault();
-  
-  // Get form values
-  var branch = document.getElementById('branch').value;
-  var rollNumber = document.getElementById('rollNumber').value.trim();
-
-  // Define exam results data (for demonstration)
-  var examResults = {
-    "CSE": {
-      "23U11A05H6": {
-        "name": "Uppala Vinay Kumar",
-        "subjects": {
-          "Linear Algebra and Calculus": "A",
-          "Engineering Chemistry": "F",
-          "Programming for Problem solving": "A+",
-          "Engineering Graphics": "A",
-          "Basic Electrical Engineering": "B",
-          "Elements of CSE": "A+",
-          "Engineering Chemistry Lab": "A+",
-          "Basic Electrical Engineering Lab": "A+",
-          "Programming for Problem Solving Lab": "A",
-          "Environmental Science": "O"
+    <script>
+        function showName() {
+            document.getElementById('name-container').style.display = 'block';
         }
-      }
-    },
-    "CSM": {
-      "23C91A66H6": {
-        "name": "Lalitha Kishori",
-        "subjects": {
-          "Linear Algebra and Matrix": "O",
-          "Applied Physics": "O",
-          "Programming for Problem Solving": "O",
-          "English": "O",
-          "Programming for Problem Solving lab": "O",
-          "English Language and Communication Skills Lab": "O",
-          "Workshop Manufacturing Practice": "O",
-          "Applied Physics Lab": "O",
-          "Elements of Computer Science": "O",
-          "Social Innovation/ Technical Seminar": "O"
-        }
-      }
-    },
-    "CSD": {},
-    "ECE": {
-      "23U11A0442": {
-        "name": "Thumu Sai",
-        "subjects": {
-          "Linear Algebra and Calculus": "A",
-          "Applied Physics": "A+",
-          "Computer Programming Engineering": "O",
-          "English for Skill Enhancement": "A",
-          "Engineering Workshop": "B",
-          "Elements of ECE": "A+",
-          "Applied Physics Lab": "A+",
-          "English Language Communications Lab": "A+",
-          "CPE Lab": "A",
-          "Environmental Science": "O"
-        }
-      },
-      "23U11A0435": {
-        "name": "Payyamula Nithin",
-        "subjects": {
-          "Linear Algebra and Calculus": "A",
-          "Applied Physics": "A",
-          "Computer Programming Engineering": "A+",
-          "English for Skill Enhancement": "O",
-          "Engineering Workshop": "A",
-          "Elements of ECE": "A+",
-          "Applied Physics Lab": "O",
-          "English Language Communications Lab": "A+",
-          "CPE Lab": "F",
-          "Environmental Science": "A"
-        }
-      },
-      "23U11A0427": {
-        "name": "Kuntigorla Praveen",
-        "subjects": {
-          "Linear Algebra and Calculus": "O",
-          "Applied Physics": "O",
-          "Computer Programming Engineering": "O",
-          "English for Skill Enhancement": "A+",
-          "Engineering Workshop": "B",
-          "Elements of ECE": "A",
-          "Applied Physics Lab": "A+",
-          "English Language Communications Lab": "A",
-          "CPE Lab": "O",
-          "Environmental Science": "O"
-        }
-      },
-      "23U11A0439": {
-        "name": "Talari Surendra",
-        "subjects": {
-          "Linear Algebra and Calculus": "B",
-          "Applied Physics": "A",
-          "Computer Programming Engineering": "B",
-          "English for Skill Enhancement": "A",
-          "Engineering Workshop": "B",
-          "Elements of ECE": "A",
-          "Applied Physics Lab": "A",
-          "English Language Communications Lab": "A",
-          "CPE Lab": "C",
-          "Environmental Science": "B"
-        }
-      },
-      "23U11A0444": {
-        "name": "Chittukati Venkatesh",
-        "subjects": {
-          "Linear Algebra and Calculus": "B+",
-          "Applied Physics": "A",
-          "Computer Programming Engineering": "B",
-          "English for Skill Enhancement": "A+",
-          "Engineering Workshop": "O",
-          "Elements of ECE": "A",
-          "Applied Physics Lab": "A",
-          "English Language Communications Lab": "A",
-          "CPE Lab": "A",
-          "Environmental Science": "A+"
-        }
-      },
-      "23U11A0413": {
-        "name": "Dharavath Gopi",
-        "subjects": {
-          "Gopi: madam black saree lo bagunnaru" : "F",
-          "MADAM: thanks" : "F",
-          "Gopi: thanks a na mam inkem ledha": "F",
-          "MADAM: INKENTI ANNI FAIL CHESA...": "F",
-          "OK NAA...": "F","Linear Algebra and Calculus": "F",
-          "Linear Algebra and Calculus": "F",
-          "Applied Physics": "F",
-          "Computer Programming Engineering": "F",
-          "English for Skill Enhancement": "F",
-          "Engineering Workshop": "F",
-        }
-      },
-      "23U11A0438": {
-        "name": "Sriram Sindhu",
-        "subjects": {
-          "Linear Algebra and Calculus": "B+",
-          "Applied Physics": "C",
-          "Computer Programming Engineering": "A",
-          "English for Skill Enhancement": "A",
-          "Engineering Workshop": "B+",
-          "Elements of ECE": "A",
-          "Applied Physics Lab": "A",
-          "English Language Communications Lab": "A",
-          "CPE Lab": "A",
-          "Environmental Science": "B+"
-        }
-      },
-      "23U11A0430": {
-        "name": "Mahesh",
-        "subjects": {
-          "Linear Algebra and Calculus": "B+",
-          "Applied Physics": "A+",
-          "Computer Programming Engineering": "O",
-          "English for Skill Enhancement": "A",
-          "Engineering Workshop": "A",
-          "Elements of ECE": "A",
-          "Applied Physics Lab": "A",
-          "English Language Communications Lab": "A",
-          "CPE Lab": "A",
-          "Environmental Science": "A+"
-        }
-      },
-      "23U11A0445": {
-        "name": "Mallula Dhanasree",
-        "subjects": {
-          "Linear Algebra and Calculus": "F",
-          "Applied Physics": "B",
-          "Computer Programming Engineering": "B+",
-          "English for Skill Enhancement": "A",
-          "Engineering Workshop": "A",
-          "Elements of ECE": "A+",
-          "Applied Physics Lab": "B+",
-          "English Language Communications Lab": "A",
-          "CPE Lab": "A",
-          "Environmental Science": "B+"
-        }
-      },
-      "23U11A0401": {
-        "name": "Akroj Balasri",
-        "subjects": {
-          "Linear Algebra and Calculus": "A",
-          "Applied Physics": "B+",
-          "Computer Programming Engineering": "F",
-          "English for Skill Enhancement": "B",
-          "Engineering Workshop": "B+",
-          "Elements of ECE": "C",
-          "Applied Physics Lab": "B",
-          "English Language Communications Lab": "A",
-          "CPE Lab": "A+",
-          "Environmental Science": "A+"
-        }
-      }
-    },
-    "EEE": {}
-  };
-
-  // Check if roll number exists in examResults for the selected branch
-  if (examResults.hasOwnProperty(branch) && examResults[branch].hasOwnProperty(rollNumber)) {
-    var student = examResults[branch][rollNumber];
-    var studentName = student.name;
-    var subjects = student.subjects;
-
-    var tableHtml = `
-      <h2>Name: ${studentName} - Roll Number: ${rollNumber}</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Subject</th>
-            <th>Grade</th>
-          </tr>
-        </thead>
-        <tbody>
-    `;
-
-    var totalCredits = 0;
-    var totalGradePoints = 0;
-    var hasFailed = false;
-
-    // Build table rows for each subject and grade
-    Object.keys(subjects).forEach(function(subject) {
-      var grade = subjects[subject];
-      var credit = 3; // Assuming each subject has 3 credits
-      tableHtml += `
-        <tr>
-          <td>${subject}</td>
-          <td>${grade}</td>
-        </tr>
-      `;
-      
-      // Check if grade is F
-      if (grade === "F") {
-        hasFailed = true;
-      } else {
-        // Calculate grade points for the subject
-        var gradePoint = calculateGradePoint(grade);
-        totalCredits += credit;
-        totalGradePoints += gradePoint * credit;
-      }
-    });
-
-    tableHtml += `
-        </tbody>
-      </table>
-    `;
-
-    // Calculate SGPA and CGPA
-    var sgpa = (totalGradePoints / totalCredits).toFixed(2);
-    var cgpa = sgpa; // For demonstration, assuming CGPA is the same as SGPA
-
-    tableHtml += `
-      <div class="total">
-        <p><strong>SGPA:</strong> ${hasFailed ? "Fail" : sgpa}</p>
-        <p><strong>CGPA:</strong> ${hasFailed ? "0.00" : cgpa}</p>
-      </div>
-    `;
-
-    document.getElementById('resultContainer').innerHTML = tableHtml;
-  } else {
-    document.getElementById('resultContainer').innerHTML = "<p>Error loading results. Please try after something!</p>";
-  }
-});
-
-// Function to calculate grade points based on grade
-function calculateGradePoint(grade) {
-  switch(grade) {
-    case "O": return 10;
-    case "A+": return 9;
-    case "A": return 8;
-    case "B+": return 7;
-    case "B": return 6;
-    case "C": return 5;
-    case "F": return 0;
-    default: return 0;
-  }
-}
-</script>
+    </script>
 
 </body>
 </html>
